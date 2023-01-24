@@ -46,10 +46,6 @@ def visualize(
             )
         ]
     )
-    if xaxis is not None:
-        MINIMAL["xaxis"]["range"] = xaxis
-    if yaxis is not None:
-        MINIMAL["yaxis"]["range"] = yaxis
     fig.update_layout(
         template=MINIMAL,
         autosize=False,
@@ -57,6 +53,10 @@ def visualize(
         height=height,
         margin=dict(l=10, r=10, b=10, t=10, pad=0),
     )
+    if xaxis is not None:
+        fig.update_xaxes(range=xaxis)
+    if yaxis is not None:
+        fig.update_xaxes(range=yaxis)
     if camera is None:
         camera = dict(
             up=dict(x=0, y=0, z=1), center=dict(x=0, y=0, z=0), eye=dict(x=0, y=2.5, z=0)
