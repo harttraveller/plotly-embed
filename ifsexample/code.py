@@ -22,7 +22,9 @@ def sierpinski(n: int, dim: int) -> list[list[float]]:
     return np.matrix(p)
 
 
-def visualize(points, save=None, camera=None, width=480, height=480):
+def visualize(
+    points, save=None, camera=None, width=480, height=480, xaxis=None, yaxis=None
+):
     if isinstance(points, np.matrix):
         points = points.tolist()
     a, b, c, d = list(zip(*points))
@@ -44,6 +46,10 @@ def visualize(points, save=None, camera=None, width=480, height=480):
             )
         ]
     )
+    if xaxis is not None:
+        MINIMAL["xaxis"]["range"] = xaxis
+    if yaxis is not None:
+        MINIMAL["yaxis"]["range"] = yaxis
     fig.update_layout(
         template=MINIMAL,
         autosize=False,
