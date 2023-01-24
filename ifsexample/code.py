@@ -47,8 +47,8 @@ def visualize(points, save=None, camera=None, width=480, height=480):
     fig.update_layout(
         template=MINIMAL,
         autosize=False,
-        width=480,
-        height=480,
+        width=width,
+        height=height,
         margin=dict(l=10, r=10, b=10, t=10, pad=0),
     )
     if camera is None:
