@@ -22,7 +22,7 @@ def sierpinski(n: int, dim: int) -> list[list[float]]:
     return np.matrix(p)
 
 
-def visualize(points, save=None, camera=None):
+def visualize(points, save=None, camera=None, width=480, height=480):
     if isinstance(points, np.matrix):
         points = points.tolist()
     a, b, c, d = list(zip(*points))
