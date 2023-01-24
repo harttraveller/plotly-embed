@@ -22,7 +22,7 @@ def sierpinski(n: int, dim: int) -> list[list[float]]:
     return np.matrix(p)
 
 
-def visualize(points, save=None):
+def visualize(points, save=None, camera=None):
     if isinstance(points, np.matrix):
         points = points.tolist()
     a, b, c, d = list(zip(*points))
@@ -51,9 +51,10 @@ def visualize(points, save=None):
         height=480,
         margin=dict(l=10, r=10, b=10, t=10, pad=0),
     )
-    camera = dict(
-        up=dict(x=0, y=0, z=1), center=dict(x=0, y=0, z=0), eye=dict(x=0, y=2.5, z=0)
-    )
+    if camera is None:
+        camera = dict(
+            up=dict(x=0, y=0, z=1), center=dict(x=0, y=0, z=0), eye=dict(x=0, y=2.5, z=0)
+        )
     fig.update_layout(scene_camera=camera)
     if save is not None:
         fig.write_html(save)
