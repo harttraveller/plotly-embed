@@ -1,7 +1,6 @@
 # plotly dark
 import plotly.graph_objects as go
 
-
 MINIMAL = dict(
     layout=go.Layout(
         {
