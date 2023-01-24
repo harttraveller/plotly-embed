@@ -23,7 +23,14 @@ def sierpinski(n: int, dim: int) -> list[list[float]]:
 
 
 def visualize(
-    points, save=None, camera=None, width=480, height=480, xaxis=None, yaxis=None
+    points,
+    save=None,
+    camera=None,
+    width=480,
+    height=480,
+    xaxis=None,
+    yaxis=None,
+    zaxis=None,
 ):
     if isinstance(points, np.matrix):
         points = points.tolist()
@@ -53,15 +60,18 @@ def visualize(
         height=height,
         margin=dict(l=10, r=10, b=10, t=10, pad=0),
     )
-    if xaxis is not None:
-        fig.update_xaxes(range=xaxis)
-    if yaxis is not None:
-        fig.update_xaxes(range=yaxis)
     if camera is None:
         camera = dict(
             up=dict(x=0, y=0, z=1), center=dict(x=0, y=0, z=0), eye=dict(x=0, y=2.5, z=0)
         )
     fig.update_layout(scene_camera=camera)
+    if xaxis is not None:
+        fig.update_layout(xaxis_range=xaxis)
+    if yaxis is not None:
+        fig.update_layout(yaxis_range=yaxis)
+    if zaxis is not None:
+        fig.update_layout(yaxis_range=zaxis)
+
     if save is not None:
         fig.write_html(save)
     else:
